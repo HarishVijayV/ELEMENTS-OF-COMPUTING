@@ -1,0 +1,93 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/detector.hdl
+
+
+CHIP detector {
+    IN a[16];
+    OUT out;
+
+    PARTS:
+//1
+    Not(in=a[0],out=na1);
+    Not(in=a[3],out=na2);
+    And(a=na1,b=a[1],out=o1);
+    And(a=na2,b=a[2],out=o2);
+    And(a=o1,b=o2,out=oa1);
+//2
+    Not(in=a[1],out=nb1);
+    Not(in=a[4],out=nb2);
+    And(a=nb1,b=a[2],out=o1a);
+    And(a=nb2,b=a[3],out=o2a);
+    And(a=o1a,b=o2a,out=ob1);
+//3
+    Not(in=a[2],out=nc0);
+    Not(in=a[5],out=nc3);
+    And(a=nc0,b=a[3],out=o1b);
+    And(a=nc3,b=a[4],out=o2b);
+    And(a=o1b,b=o2b,out=oc1);
+//4
+    Not(in=a[3],out=nd0);
+    Not(in=a[6],out=nd3);
+    And(a=nd0,b=a[4],out=o1c);
+    And(a=nd3,b=a[5],out=o2c);
+    And(a=o1c,b=o2c,out=od1);
+//5
+    Not(in=a[4],out=ne0);
+    Not(in=a[7],out=ne3);
+    And(a=ne0,b=a[5],out=o1d);
+    And(a=ne3,b=a[6],out=o2d);
+    And(a=o1d,b=o2d,out=oe1);
+//6
+    Not(in=a[5],out=nf0);
+    Not(in=a[8],out=nf3);
+    And(a=nf0,b=a[6],out=o1e);
+    And(a=nf3,b=a[7],out=o2e);
+    And(a=o1e,b=o2e,out=of1);
+//7
+    Not(in=a[6],out=ng0);
+    Not(in=a[9],out=ng3);
+    And(a=ng0,b=a[7],out=o1f);
+    And(a=ng3,b=a[8],out=o2f);
+    And(a=o1f,b=o2f,out=og1);
+//8
+    Not(in=a[7],out=nhh0);
+    Not(in=a[10],out=nhh3);
+    And(a=nhh0,b=a[8],out=o1g);
+    And(a=nhh3,b=a[9],out=o2g);
+    And(a=o1g,b=o2g,out=oh1);
+//9
+    Not(in=a[8],out=nii0);
+    Not(in=a[11],out=nii3);
+    And(a=nii0,b=a[9],out=o1h);
+    And(a=nii3,b=a[10],out=o2h);
+    And(a=o1h,b=o2h,out=oi1);
+ //10
+    Not(in=a[9],out=nh0);
+    Not(in=a[12],out=nh3);
+    And(a=nh0,b=a[10],out=o1i);
+    And(a=nh3,b=a[11],out=o2i);
+    And(a=o1i,b=o2i,out=oj1);
+//11
+    Not(in=a[10],out=ni0);
+    Not(in=a[13],out=ni3);
+    And(a=ni0,b=a[11],out=o1j);
+    And(a=ni3,b=a[12],out=o2j);
+    And(a=o1j,b=o2j,out=ok1);
+//12
+    Not(in=a[11],out=nj0);
+    Not(in=a[14],out=nj3);
+    And(a=nj0,b=a[12],out=o1k);
+    And(a=nj3,b=a[13],out=o2k);
+    And(a=o1k,b=o2k,out=ol1);
+
+//13
+    Not(in=a[12],out=nk0);
+    Not(in=a[15],out=nk3);
+    And(a=nk0,b=a[12],out=ooo1k);
+    And(a=nk3,b=a[13],out=ooo2k);
+    And(a=ooo1k,b=ooo2k,out=om1);
+Or13Way(in[0]=oa1,in[1]=ob1,in[2]=oc1,in[3]=od1,in[4]=oe1,in[5]=of1,in[6]=og1,in[7]=oh1,in[8]=oi1,in[9]=oj1,in[10]=ok1,in[11]=ol1,in[12]=om1,out=out);
+
+}
